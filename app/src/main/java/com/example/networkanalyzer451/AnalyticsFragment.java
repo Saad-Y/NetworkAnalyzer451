@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
@@ -170,11 +171,50 @@ public class AnalyticsFragment extends Fragment {
     }
 
     private void calculateAndDisplayStatistics(List<CellData> cellDataList) {
-        // Implement logic to calculate statistics based on the retrieved data
+        // Calculate statistics based on the retrieved data
         // For demonstration purposes, let's just display the count of data points
         int dataPointCount = cellDataList.size();
         Toast.makeText(requireContext(), "Data points count: " + dataPointCount, Toast.LENGTH_SHORT).show();
+
+        // You can create line graph series for each type of data you want to display
+        // For example, let's create a series for signal power per network type
+
+        // Initialize a series for each network type
+        LineGraphSeries<DataPoint> series2G = new LineGraphSeries<>();
+        LineGraphSeries<DataPoint> series3G = new LineGraphSeries<>();
+        LineGraphSeries<DataPoint> series4G = new LineGraphSeries<>();
+
+        // Populate the series with mock data
+        for (CellData cellData : cellDataList) {
+            // Add data points to the corresponding series based on network type
+            switch (cellData.getNetworkType()) {
+                case "2G":
+                    series2G.appendData(new DataPoint(cellData.getSignalPower(), 0), true, cellDataList.size());
+                    break;
+                case "3G":
+                    series3G.appendData(new DataPoint(cellData.getSignalPower(), 0), true, cellDataList.size());
+                    break;
+                case "4G":
+                    series4G.appendData(new DataPoint(cellData.getSignalPower(), 0), true, cellDataList.size());
+                    break;
+                // Add cases for more network types if needed
+            }
+        }
+
+        // Add series to the corresponding graph views
+        GraphView graphViewSignalPowerNetwork = getView().findViewById(R.id.idGraphView3);
+        graphViewSignalPowerNetwork.addSeries(series2G);
+        graphViewSignalPowerNetwork.addSeries(series3G);
+        graphViewSignalPowerNetwork.addSeries(series4G);
+
+        // Customize the appearance of the graph view (optional)
+        graphViewSignalPowerNetwork.getViewport().setXAxisBoundsManual(true);
+        graphViewSignalPowerNetwork.getViewport().setMinX(0);
+        graphViewSignalPowerNetwork.getViewport().setMaxX(100);
+        graphViewSignalPowerNetwork.getGridLabelRenderer().setHorizontalAxisTitle("Signal Power");
+        graphViewSignalPowerNetwork.getGridLabelRenderer().setVerticalAxisTitle("Network Type");
     }
+
 }
 
 class MockDataGenerator {

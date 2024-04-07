@@ -1,14 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".AnalyticsFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    android:layout_height="match_parent">
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="analytics" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            tools:visibility="visible">
+
+            <!-- Start Date Input for Analytics -->
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/startDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/startDateEditText1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:hint="Start Date"
+                    android:onClick="showDatePicker"
+                    android:tag="startDate" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <!-- End Date Input for Analytics -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/endDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/endDateEditText2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:hint="End Date"
+                    android:onClick="showDatePicker"
+                    android:tag="endDate" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- LineChart and Calculated Number for Average Connectivity Time Per Operator -->
+            <LinearLayout
+                android:id="@+id/connectivityTimeContainer1"
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/connectivityTimeOperator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Connectivity Time Per Operator"
+                    android:textSize="16sp" />
+
+                <com.jjoe64.graphview.GraphView
+                    android:id="@+id/idGraphView"
+                    android:layout_width="360dp"
+                    android:layout_height="260dp"
+                    android:layout_alignParentTop="true" />
+            </LinearLayout>
+
+            <!-- Continue with the rest of your content -->
+
+            <!-- LineChart and Calculated Number for Average Connectivity Time Per Device -->
+
+            <LinearLayout
+                android:id="@+id/connectivityTimeContainer2"
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/connectivityTimeDevice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Connectivity Time Per Device"
+                    android:textSize="16sp" />
+
+                <com.jjoe64.graphview.GraphView
+                    android:id="@+id/idGraphView2"
+                    android:layout_width="360dp"
+                    android:layout_height="260dp"
+                    android:layout_alignParentTop="true" />
+            </LinearLayout>
+
+            <!-- LineChart and Calculated Number for Average Signal Power Per Network Type -->
+            <LinearLayout
+                android:id="@+id/signalPowerContainer1"
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/signalPowerNetwork"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Average Signal Power Per Network Type"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <!-- LineChart and Calculated Number for Average Signal Power Per Device -->
+            <LinearLayout
+                android:id="@+id/signalPowerContainer2"
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.jjoe64.graphview.GraphView
+                    android:id="@+id/idGraphView3"
+                    android:layout_width="360dp"
+                    android:layout_height="260dp"
+                    android:layout_alignParentTop="true" />
+
+                <TextView
+                    android:id="@+id/signalPowerDevice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Average Signal Power Per Device"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <!-- LineChart and Calculated Number for Average SNR or SINR -->
+            <LinearLayout
+                android:id="@+id/snrSINRContainer"
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.jjoe64.graphview.GraphView
+                    android:id="@+id/idGraphView4"
+                    android:layout_width="360dp"
+                    android:layout_height="260dp"
+                    android:layout_alignParentTop="true" />
+
+                <TextView
+                    android:id="@+id/snrSINR"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Average SNR or SINR Per Network Type"
+                    android:textSize="16sp" />
+
+                <com.jjoe64.graphview.GraphView
+                    android:id="@+id/idGraphView5"
+                    android:layout_width="360dp"
+                    android:layout_height="260dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

@@ -1,5 +1,4 @@
 package com.example.networkanalyzer451;
-
 import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -20,10 +19,8 @@ import com.example.networkanalyzer451.databinding.ActivityMainBinding;
 
 import android.view.Menu;
 import android.view.MenuItem;
-
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,18 +37,11 @@ public class MainActivity extends AppCompatActivity {
             }
             return true;
         });
-
-
-
-
-
     }
-
     private void replaceFragment(Fragment fragment){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.framelayout,fragment);
         fragmentTransaction.commit();
-
     }
 }

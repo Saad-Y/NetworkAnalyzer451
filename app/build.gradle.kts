@@ -35,7 +35,7 @@ android {
 }
 
 dependencies {
-
+    implementation ("com.jjoe64:graphview:4.2.2")
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.constraintlayout)

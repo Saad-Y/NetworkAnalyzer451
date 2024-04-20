@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<string name="app_name">Network Analyzer</string>
+
+        <string name="operator_text">Operator: %1$s</string>
+        <string name="signal_power_text">Signal Power: %1$d</string>
+        <string name="time_stamp_text">Time Stamp: %1$s</string>
+        <string name="snr_text">SINR/SNR: %1$s</string>
+        <string name="network_type_text">Network Type: %1$s</string>
+        <string name="frequency_band_text">Frequency Band: %1$s</string>
+        <string name="cell_id_text">Cell ID: %1$s</string>
+        <string name="app_name">Network Analyzer</string>
 </resources>
